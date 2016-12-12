@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: joxy
+  name: joxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: joxy
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: joxy
+    spec:
+      containers:
+      - args:
+        - -domain=joxy.joonix.se
+        - -backend=ws:443
+        image: eu.gcr.io/joonix-cloud/joxy:latest
+        imagePullPolicy: Always
+        name: joxy
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

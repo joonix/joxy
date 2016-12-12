@@ -1,6 +1,6 @@
-REGISTRY?=eu.gcr.io/joonix.se/joonix-cloud
+REGISTRY?=eu.gcr.io/joonix-cloud
 IMAGE?=joxy
-GITHASH?=$(shell git describe --dirty --tags)
+GITHASH?=$(shell git describe --dirty --tags --always)
 
 all: container
 
@@ -14,7 +14,7 @@ release: container
 	gcloud docker -- push $(REGISTRY)/$(IMAGE):latest
 
 deploy: release
-	kubectl set image deployment/$(IMAGE) tracker=$(REGISTRY)/$(IMAGE):$(GITHASH)
+	kubectl set image deployment/$(IMAGE) joxy=$(REGISTRY)/$(IMAGE):$(GITHASH)
 
 clean:
 	rm $(IMAGE)

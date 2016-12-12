@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: joxy
+  name: joxy
+spec:
+  ports:
+  - name: 443-443
+    nodePort: 32213
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  selector:
+    app: joxy
+  sessionAffinity: None
+  type: LoadBalancer

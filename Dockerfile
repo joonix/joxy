@@ -3,7 +3,7 @@ MAINTAINER Johnny Bergström <johnny@joonix.se>
 
 RUN apk --update add ca-certificates
 
-RUN mkdir /app
+RUN mkdir -p /app/certs
 ADD joxy /app
 
 WORKDIR /app
