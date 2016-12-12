@@ -1,0 +1,23 @@
+{
+	"ImportPath": "github.com/joonix/joxy",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v75",
+	"Deps": [
+		{
+			"ImportPath": "golang.org/x/crypto/acme",
+			"Rev": "b07d8c96772f426812d3fc5530710ec1f3b205e7"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/acme/autocert",
+			"Rev": "b07d8c96772f426812d3fc5530710ec1f3b205e7"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "b1a2d6e8c8b5fc8f601ead62536f02a8e1b6217d"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context/ctxhttp",
+			"Rev": "b1a2d6e8c8b5fc8f601ead62536f02a8e1b6217d"
+		}
+	]
+}
