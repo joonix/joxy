@@ -7,5 +7,6 @@ RUN mkdir -p /app/certs
 ADD joxy /app
 
 WORKDIR /app
-EXPOSE 443
+
+EXPOSE 443 8080
 ENTRYPOINT ["/app/joxy"]

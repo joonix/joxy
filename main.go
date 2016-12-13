@@ -4,6 +4,8 @@ import (
 	"crypto/tls"
 	"flag"
 	"log"
+	"net/http"
+	_ "net/http/pprof"
 
 	"golang.org/x/crypto/acme/autocert"
 	"golang.org/x/net/context"
@@ -37,5 +39,8 @@ func main() {
 	}
 	conf := tls.Config{GetCertificate: m.GetCertificate}
 
+	// pprof listener.
+	go http.ListenAndServe(":8080", nil)
+	// proxy listener.
 	log.Fatalln(listenAndServe(*backend, ":https", &conf))
 }
